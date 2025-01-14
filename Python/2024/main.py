@@ -16,7 +16,6 @@ def puzzle2(data):
     print(f'Puzzle 2 Answer: {puzzle2_answer}')
 
 def getinput():
-    array = []
 
     # Gets scripts absolute path and changes to its directory
     abspath = os.path.abspath(__file__)
@@ -25,6 +24,7 @@ def getinput():
 
     with open("input.txt") as infile:
         return infile.read().splitlines()
+        
 
 
 def main():

@@ -16,7 +16,8 @@ def puzzle2(data):
     print(f'Puzzle 2 Answer: {puzzle2_answer}')
 
 def getinput():
-    array = []
+    update_rules = ()
+    update_procedure = []
 
     # Gets scripts absolute path and changes to its directory
     abspath = os.path.abspath(__file__)
@@ -24,12 +25,17 @@ def getinput():
     os.chdir(dname)
 
     with open("input.txt") as infile:
-        return infile.read().splitlines()
+        data = infile.read().splitlines()
+        #print(data)
+    
+    for i in range(len(data)):
+        print(data[i])
 
+    return data
 
 def main():
     rawinput=getinput()
-    print(rawinput)
+    #print(rawinput)
     puzzle1(rawinput)
     puzzle2(rawinput)
 
