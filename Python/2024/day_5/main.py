@@ -29,7 +29,7 @@ def getinput():
 
 def main():
     rawinput=getinput()
-    #print(rawinput)
+    print(rawinput)
     puzzle1(rawinput)
     puzzle2(rawinput)
 
