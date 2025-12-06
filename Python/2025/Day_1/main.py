@@ -7,8 +7,24 @@ from time import perf_counter
 def puzzle1(data):
     start_time = perf_counter()
     puzzle1_answer = 0
+    position = 50
 
+    for i in data:
+        number = ''.join(filter(str.isdigit, i))
+        if "R" in i:
+            position += int(number)
+        elif "L" in i:
+            position -= int(number)
 
+        position = position % 100
+
+        if position < 0:
+            position += 100
+
+        if position == 0:
+            puzzle1_answer += 1
+            
+ 
     print(f'Puzzle 1 Answer: {puzzle1_answer}')
     end_time = perf_counter()
     print(f"Puzzle 1 processed in {end_time - start_time:.8f} seconds.\n")
@@ -29,8 +45,8 @@ def get_input():
     dname = os.path.dirname(abspath)
     os.chdir(dname)
 
-    #with open("input.txt") as infile
-    with open("testinput.txt") as infile:
+    with open("input.txt") as infile:
+    #with open("testinput.txt") as infile:
         end_time = perf_counter()
         print(f"Got input in {end_time - start_time:.8f} seconds.\n")
         return infile.read().splitlines()
@@ -39,10 +55,9 @@ def format_data(raw_input):
     start_time = perf_counter()
 
 
-
     end_time = perf_counter()
     print(f"Formated data in {end_time - start_time:.8f} seconds.\n")
-    return ()
+    return (raw_input)
 
 
 def main():
