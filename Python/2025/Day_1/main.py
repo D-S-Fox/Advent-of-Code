@@ -23,8 +23,7 @@ def puzzle1(data):
 
         if position == 0:
             puzzle1_answer += 1
-            
- 
+           
     print(f'Puzzle 1 Answer: {puzzle1_answer}')
     end_time = perf_counter()
     print(f"Puzzle 1 processed in {end_time - start_time:.8f} seconds.\n")
@@ -32,7 +31,23 @@ def puzzle1(data):
 def puzzle2(data):
     start_time = perf_counter()
     puzzle2_answer = 0
+    position = 50
 
+    for i in data:
+        number = ''.join(filter(str.isdigit, i))
+        for j in range(int(number)):
+            if "R" in i:
+                position += 1
+            elif "L" in i:
+                position -= 1
+
+            position = position % 100
+
+            if position == 0:
+                puzzle2_answer += 1
+                position += 100
+            elif position >= 99:
+                position -= 100
 
     print(f'Puzzle 2 Answer: {puzzle2_answer}')
     end_time = perf_counter()
@@ -53,7 +68,6 @@ def get_input():
         
 def format_data(raw_input):
     start_time = perf_counter()
-
 
     end_time = perf_counter()
     print(f"Formated data in {end_time - start_time:.8f} seconds.\n")
