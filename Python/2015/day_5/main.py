@@ -17,16 +17,25 @@ def letter_pair(line):
     for i in range(len(line)-1):
         current_pair = line[i] + line[i+1]
         if current_pair in line[i+1:]:
-            print(f"- {current_pair}")
-            return True
-    
+            #print(f"check {line[i:i+2]} == {line[i+2:i+4]}")
+            if not len(set(line[i:i+3])) == 1 or (line[i:i+2] == line[i+2:i+4]):
+                #print(f" - Letter pair - {current_pair} | {line[i+1:]}")
+                #print(f"   - {line[i:i+3]} = {len(set(line[i:i+3]))}")
+                return True
+            else:
+                break
+                
+                
+    #print(" - FAIL letter pair")
     return False
 
 def letter_repeat(line):
     for i in range(len(line)-2):
         if line[i] == line[i+2]:
+            #print(f" - letter repeat - {line[i]} | {line[i+2]}")
             return True
         
+    #print(" - FAIL letter repeat")
     return False
 
 def puzzle2(data):
@@ -34,11 +43,12 @@ def puzzle2(data):
     puzzle2_answer = 0
 
     for line in data:
-        print(line)
+        #print(f"Checking: {line}")
         rule_1=letter_pair(line)
         if rule_1:
             rule_2=letter_repeat(line)
             if rule_2:
+                #print(" - PASS")
                 puzzle2_answer += 1
 
     print(f'Puzzle 2 Answer: {puzzle2_answer}')
