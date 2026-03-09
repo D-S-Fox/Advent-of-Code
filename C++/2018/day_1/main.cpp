@@ -1,6 +1,9 @@
 #include <iostream>
 #include <fstream>
 #include <algorithm>
+#include <vector>
+#include <string>
+#include <typeinfo>
 
 using std::cout;
 
@@ -8,12 +11,23 @@ int main() {
     
     std::fstream input("./testinput.txt", std::ios_base::in);
 
+    std::vector<int> freq_list {0};
     int freq {0};
     int p2_freq {0};
-    int i {};
+    int line {};
 
-    while (input >> i) {
+    while (input >> line) {
         freq += i;
+        if (p2_freq == 0 || freq_list.size() >= 1)
+        {
+            std::string stg {std::to_string(i)};
+            if (stg.substr(0, 1) == "-")
+            {
+                int to_move = std::stoi(stg.substr(1, -1));
+                for ()
+            }
+        }
+        freq_list.push_back(freq);
     }
     
     cout << "Puzzle 1 - frequency: " << freq << "\n";
